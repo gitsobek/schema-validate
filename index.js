@@ -1,5 +1,6 @@
 "use strict";
+const mongoose = require("mongoose");
 
-require("./src/array");
+require("./src/validator");
 
 module.exports = exports = mongoose;

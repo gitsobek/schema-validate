@@ -2,9 +2,14 @@
 
 const _ = require("lodash");
 const mongoose = require("mongoose");
+const SchemaArray = mongoose.Schema.Types.Array;
+const StringArray = mongoose.Schema.Types.String;
+const MongooseError = mongoose.Error;
+
+MongooseError.messages.Array = MongooseError.messages.Array || {};
 
 SchemaArray.prototype.sort = function sort(shouldSort) {
-  if (!shouldSort) {
+  if (arguments.length > 0 && !shouldSort) {
     return this;
   }
   return this.set(function(v, self) {
@@ -20,7 +25,7 @@ SchemaArray.prototype.sort = function sort(shouldSort) {
 };
 
 SchemaArray.prototype.uniqSort = function uniqSort(shouldSort) {
-  if (!shouldSort) {
+  if (arguments.length > 0 && !shouldSort) {
     return this;
   }
   return this.set(function(v, self) {
